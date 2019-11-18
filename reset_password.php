@@ -12,6 +12,17 @@ if(isset($_POST['submit']))
         echo "password do not match";
         exit();
     }
+
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+
+    if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
+    {
+        echo "password should be strong";
+        exit();
+    }
+
     $hashed = password_hash($password, PASSWORD_DEFAULT);
     try{
        $sql = "UPDATE `users` SET `passwd` = '$hashed' WHERE `email` = '$email'";

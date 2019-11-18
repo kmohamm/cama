@@ -26,21 +26,20 @@
                 <video id="player">Video is loading...</video>
 			</div>
 			<div>
-                <canvas class="snap" name="image" id="canvas" width="500px" height="375px">Canvas Still Loading</canvas>
+               <canvas class="snap" name="image" id="canvas" width="500px" height="375px">Canvas Still Loading</canvas>
                 <canvas class="snap1" name="image1" id="canvas_stickers" width="50px" height="50px">Canvas Still Loading</canvas>
-                <img id="scream" width="100px" height="100px" src="stickers/61J8UP8pySL._SY355_.jpg" alt="The Scream">
                 <canvas name="image" id="player">Canvas still loading</canvas>
-                <!-- <a id="download" download="image.png">Download Image</canvas> -->
                 <input type="submit" class="button1" value="SnapShot" id="capture">
                 <input type="submit" class="" value="Save" id="save">
-                <select class="select-input" name="sticker" id="dropdown" onchange="setPicture(this)">
-                            <option value="stickers/sticker01.png">sticker01</option>
-                            <option value="stickers/sticker02.png">sticker02</option>
-                            <option value="stickers/sticker03.png">sticker03</option>
-                            <option value="stickers/sticker04.png">sticker04</option>
-                        </select>
-                <!-- <input type="submit" class="button2" claue="download" id="down"> -->
-            </div>
+                <div class="input-group" style="text-align:center;">
+    <div class="container2" style="display:inline-block;">
+    <button onclick="stickers('stickers/sticker001.png')" class="btn">sticker1</button>
+    <button onclick="stickers('stickers/sticker002.png')" class="btn">sticker2</button>
+    <button onclick="stickers('stickers/sticker003.png')" class="btn">sticker3</button>
+    <button onclick="stickers('stickers/sticker004.png')" class="btn">sticker4</button>
+    <button onclick="stickers('stickers/sticker005.png')" class="btn">sticker5</button>
+</div>
+</div>
   </header>
   <div id="container">
 <video autoplay = "true" id = "videoElement">
@@ -65,22 +64,12 @@
     {
 
     }
-    // function download(){
-    //     var dt = canvas.toDataURL();
-    //     this.href = dt;
-    // }
-
-    // document.getElementById("download").addEventListener("click", download, false)
 
     var context = canvas.getContext('2d');
     capture.addEventListener("click", function(){
     context.drawImage(video, 0, 0, 600, 600);});
     
-    // window.onload = function() {
-    // var c = document.getElementById("myCanvas");
-    // var ctx = c.getContext("2d");
-    // var img = document.getElementById("scream");
-    // ctx.drawImage(img, 10, 10,);
+    const img1 = document.querySelector('.img1');
 
     document.getElementById('save').addEventListener('click', function(e){
         var image = canvas.toDataURL('image/png');
@@ -93,6 +82,27 @@
         xhttp.open("post", "webcam.php",false);
         xhttp.send(image);
     })
+
+    function setPicture(select){
+   var DD = document.getElementById('dropdown');
+   var value = DD.options[DD.selectedIndex].value;
+   img1.src = value;
+ }
+ function stickers(path) {
+    var sticker = new Image();
+    var width = video.offsetWidth, height = video.offsetHeight;
+    sticker.src = path;
+    if (canvas) {
+        contxt = canvas.getContext('2d');
+        contxt.drawImage(sticker, 0, 0, width, height);
+        pic.value = canvas.toDataURL('image/png');
+        if (!(document.getElementById("img"))) {
+            var elem = document.createElement("img");
+            elem.setAttribute("src", sticker.src);
+            document.getElementById("stickers").appendChild(elem);
+        }
+    }
+};
     
 </script>
 </body>
