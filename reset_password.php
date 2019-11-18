@@ -37,7 +37,7 @@ if(isset($_POST['submit']))
     <img class="pic" src="http://www.createmepink.com/wp-content/uploads/st/thumb-stock-illustration-sketch-instagram-modern-camera-logo.jpg">
     <div class="box">
         <br>
-    <form action="reset_password.php" method="post" autocomplete="off">
+    <form action="reset_password.php?email=<?php echo $_GET['email']; ?>" method="post" autocomplete="off">
         <h3>Please type in your new password</h3>
 		
         <input type="password" name="password" placeholder="Password" id="password" required>
