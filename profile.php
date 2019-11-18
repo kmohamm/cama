@@ -68,6 +68,11 @@
         <div class="three">
         <input type="password" name="password" placeholder="Password" id="password" minlength="8">
         <input type="submit" class="button3" id = "password" value="Update_password"  name="submit_passwd">
+               <br>
+               <br>
+               <input type="checkbox" name="notify" value="yes">Recieve Notifications?
+       <br><br>
+       <input type="submit" name="noti">
         </div>
         <br>
         <br>
