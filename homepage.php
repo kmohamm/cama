@@ -1,7 +1,8 @@
 <?php
+session_start();
 include("config/setup.php");
-$_SESSION['username']= $username;
-echo $_SESSION['username'];
+// $_SESSION['username']= $username;
+// echo $_SESSION['username'];
 $query = $db->query("SELECT * FROM images ORDER BY id DESC");
 $array = $query->fetchall();
 $x = 0;

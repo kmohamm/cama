@@ -2,13 +2,18 @@
 include("config/setup.php");
 
     session_start();
+
     if(!isset($_SESSION['success']))
     {
       header("location: sign.php");
     }
+    else
+    {
 
-$_SESSION['username']= $username;
-echo $_SESSION['username'];
+    }
+
+// $_SESSION['username']= $username;
+// echo $_SESSION['username'];
 $query = $db->query("SELECT * FROM images ORDER BY id DESC");
 $array = $query->fetchall();
 $x = 0;
@@ -48,9 +53,16 @@ echo $img_id;
             <input type="hidden" name="userID" value="anonymous">
             <textarea name="message"></textarea><br>
             <input type="hidden" name="imgurl" value="<?php echo $array[$x]['image_name']?>">
-            <button type="submit" name="submit" class="button1">Comment</button>
-            <button type="submit" class="button2" name="like">Like</button>
-            <button type="submit" class="button3" name="delete">Delete</button>
+            <?  if(!isset($_SESSION['success']))
+                {
+                    echo "You can only comment and like when you are logged in";
+                }
+                else{?>
+                    <button type="submit" name="submit" class="button1">Comment</button>
+                    <button type="submit" class="button2" name="like">Like</button>
+                     <a href="delete.php?action=delete&id=<?php echo $array[$x]['id'];?>" class="button3" name="delete">Delete</a>
+                <?}
+                ?>
         </form>
         <br>
         <?php

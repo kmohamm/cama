@@ -1,5 +1,6 @@
 <?php
     session_start();
+    // echo $_SESSION['username'];
     if(!isset($_SESSION['success']))
     {
         header("location: sign.php");
@@ -30,6 +31,21 @@
        $statement->execute();
        echo "password updated";
    }
+   if(isset($_POST['noti']))
+   {
+    if($_POST['notify'] == 'yes')
+    {
+        $statement = $db->prepare("UPDATE `users` SET notify = '1' WHERE username = '$old_username'");
+        $statement->execute();
+        echo "you will recieve notifications";
+    }
+    else
+    {
+        $statement = $db->prepare("UPDATE `users` SET notify = '0' WHERE username = '$old_username'");
+        $statement->execute();
+        echo "you will not recieve notifications";
+    }
+}
 ?>
 
 

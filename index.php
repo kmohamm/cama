@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 include("config/setup.php");
+include("config/database.php");
 
 if(isset($_POST['register'])){
     $name = $_POST['Name'];
@@ -21,6 +22,7 @@ if(isset($_POST['register'])){
     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
     {
         echo "password should be strong";
+        exit();
     }
 
     $check_email = $db->prepare("SELECT email FROM users WHERE email = ?");
@@ -65,7 +67,7 @@ if(isset($_POST['register'])){
     <img class="pic" src="http://www.createmepink.com/wp-content/uploads/st/thumb-stock-illustration-sketch-instagram-modern-camera-logo.jpg">
     <div class="box">
         <br>
-    <form action="index.php" method="post" autocomplete="off">
+    <form action="index.php" method="post" autocomplete="on">
         
         <input type="text" name="Name" placeholder="Name" id="name" required>
 

@@ -1,5 +1,4 @@
 <?php
-   
    session_start();
    include("config/setup.php");
    
@@ -10,9 +9,17 @@
       $check_username->execute(array($username));
       $user = $check_username->fetch(PDO::FETCH_ASSOC);
       $hashed = $user['passwd'];
+      $verified = $user['verified'];
+      if(!$verified)
+      {
+         echo "user account not verified";
+         exit();
+      }
+     
       if (password_verify($password, $hashed))
       {
-         $_SESSION["username"]= $username;
+         session_start();
+         $_SESSION["username"]= $_POST['username'];
          $_SESSION["success"] = "you have logged in successfully";
          echo "Correct";
          header("Location: homepage.php");
