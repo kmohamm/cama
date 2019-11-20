@@ -7,19 +7,20 @@ include("config/setup.php");
     {
       header("location: sign.php");
     }
-    else
-    {
 
-    }
+    $query = $db->query("SELECT * FROM images ORDER BY id DESC");
+    $array = $query->fetchall();
+    $x = 0;
+    $img_id = $array['id'];
+    echo $img_id;
 
-// $_SESSION['username']= $username;
-// echo $_SESSION['username'];
-$query = $db->query("SELECT * FROM images ORDER BY id DESC");
-$array = $query->fetchall();
-$x = 0;
-$img_id = $array['id'];
-echo $img_id;
-
+    
+    // $query = $db->prepare("SELECT username FROM images WHERE id = $img_id");
+    // $query->execute();
+    // $results = $query->fetchall();
+    // $poster_id = $results['username'];
+    //echo $poster_id;
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">

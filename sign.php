@@ -19,7 +19,7 @@
       if (password_verify($password, $hashed))
       {
          session_start();
-         $_SESSION["username"]= $_POST['username'];
+         $_SESSION["username"]= $username;
          $_SESSION["success"] = "you have logged in successfully";
          echo "Correct";
          header("Location: homepage.php");
