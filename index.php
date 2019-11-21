@@ -43,7 +43,7 @@ if(isset($_POST['register'])){
   
     $to = "$email";
     $subject = "Your password";
-    $message = "<a href=http://localhost:8080/kmohamma/email_validation.php?username=$username>link</a>.<p>Hello: $name</p>
+    $message = "<a href=http://localhost:8080/camagru/email_validation.php?username=$username>link</a>.<p>Hello: $name</p>
     
     <p>Thanks for Registering.</p>
     <p>Your email is: <b>$email</b></p>";

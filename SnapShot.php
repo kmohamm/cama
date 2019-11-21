@@ -8,9 +8,9 @@ if(!isset($_SESSION['success']))
 <!doctype html>
 <html lang=''>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="SnapShot.css">
    <script src="script.js" type="text/javascript"></script>
    <title>SnapShot</title>
@@ -102,11 +102,10 @@ if(!isset($_SESSION['success']))
     if (canvas) {
         contxt = canvas.getContext('2d');
         contxt.drawImage(sticker, 0, 0, width, height);
-        pic.value = canvas.toDataURL('image/png');
+        sticker.value = canvas.toDataURL('image/png');
         if (!(document.getElementById("img"))) {
             var elem = document.createElement("img");
             elem.setAttribute("src", sticker.src);
-            document.getElementById("stickers").appendChild(elem);
         }
     }
 };
